@@ -3,7 +3,7 @@
   "short_name": "PokePWA",
   "start_url": "home.html",
   "display": "standalone",
-  "background_color": "#e62129",
+  "background_color": "#eeeeee",
   "theme_color": "#e62129",
   "orientation": "portrait-primary",
   "icons": [
