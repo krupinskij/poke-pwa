@@ -1,0 +1,188 @@
+body {
+  background-color: #fefefe;
+}
+
+.section {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+
+  padding: 10px 0;
+  margin: 10px auto;
+
+  background-color: #e62129;
+  color: white;
+
+  box-shadow: 1px 3px 5px #332c2b;
+  border: 2px solid #332c2b;
+  border-radius: 5px;
+}
+
+.header_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header_image {
+  max-width: 90%;
+  height: auto;
+}
+
+.header_pokemon-name {
+  font-size: 50px;
+}
+
+.new-pokemon_section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-pokemon_input-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+
+  max-width: 500px;
+  width: 90%;
+}
+
+.new-pokemon_input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+
+  margin-right: -2px;
+  padding: 5px 10px;
+
+  border-radius: 5px 0 0 5px;
+  border: 2px solid #332c2b;
+
+  width: 85%;
+}
+
+.new-pokemon_button {
+  font-size: 24px;
+
+  color: white;
+  background-color: #3160b4;
+  
+  border: 2px solid #332c2b;
+  border-radius: 0 5px 5px 0;
+  width: 15%;
+}
+
+.pokemon-list_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-list_item {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+
+  margin: 5px 0;
+
+  max-width: 500px;
+  width: 90%;
+}
+
+.pokemon-list_link {
+  font-size: 26px;
+  text-decoration: inherit;
+
+  padding: 5px 10px;
+  margin-right: -2px;
+
+  color: black;
+  background-color: white;
+
+  border: 2px solid #332c2b;
+  border-radius: 5px 0 0 5px;
+
+  width: 85%;
+}
+
+.pokemon-list_link:hover {
+  text-decoration: underline;
+}
+
+.pokemon-list_button {
+  font-size: 24px;
+
+  color: white;
+  background-color: #3160b4;
+
+  border: 2px solid #332c2b;
+  border-radius: 0 5px 5px 0;
+
+  width: 15%;
+}
+
+.image_section {
+  text-align: center;
+}
+
+.image_sprite {
+  width: 200px;
+  height: auto;
+}
+
+.data_section {
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .data_section {
+    flex-direction: row;
+  }
+}
+
+.data_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.data_info {
+  width: 100%;
+  text-align: center;
+  margin: 10px;
+}
+
+.data_title {
+  font-weight: bold;
+}
+
+.home_section {
+  max-width: 500px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.home_link {
+  font-size: 24;
+  color: white;
+  text-decoration: inherit;
+}
+
+.home_link:hover {
+  text-decoration: underline;
+}
+
+.error_section {
+  max-width: 1000px;
+}
+
+.error_header {
+  font-size: 50px;
+}
+
+.error_info {
+  font-size: 30px;
+}

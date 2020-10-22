@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon | Details</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="section header_section">
+    <h1 id="pokemon-name" class="header_pokemon-name">#</h1>
+  </header>
+
+  <section class="section image_section">
+    <img id="pokemon-image" class="image_sprite" src="/images/icon.png" alt="pokemon image">
+  </section>
+
+  <section class="section data_section">
+    <div class="data_info">
+      <ul id="type-list" class="data_list">
+        <span class="data_title">Types:</span>
+      </ul>
+    </div>
+
+    <div class="data_info">
+      <span class="data_title">Height:</span>
+      <span id="pokemon-height"></span>
+      <br>
+      <span class="data_title">Weight:</span>
+      <span id="pokemon-weight"></span>
+    </div>
+
+    <div class="data_info">
+      <ul id="ability-list" class="data_list">
+        <span class="data_title">Abilities:</span>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section home_section">
+    <a class="home_link" href="home.html">Go to the Homepage</a>
+  </section>
+
+  <script src="helper.js"></script>
+  <script src="pokemonDetails.js"></script>
+  
+</body>
+</html>
