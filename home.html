@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokedex | Home</title>
 
-  <link rel="icon" href="images/icon.png">
+  <link rel="icon" href="images/icons/icon-transparent.png">
 
   <link rel="stylesheet" href="style.css">
+
+  <link rel="manifest" href="../manifest.json">
+
+  <link rel="apple-touch-icon" href="../images/icons/icon-96x96.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+  <meta name="theme-color" content="#FFE1C4">
 </head>
 <body>
   <header class="section header_section">
@@ -22,17 +28,7 @@
     </div>
   </section>
 
-  <section id="my-pokemons" class="section pokemon-list_section">
-    <div class="pokemon-list_item">
-      <a class="pokemon-list_link" href="details.html?p=pikachu">Pikachu</a>
-      <button class="pokemon-list_button">&times;</button>
-    </div>
-
-    <div class="pokemon-list_item">
-      <a class="pokemon-list_link" href="details.html?p=bulbasaur">Bulbasaur</a>
-      <button class="pokemon-list_button">&times;</button>
-    </div>
-  </section>
+  <section id="my-pokemons" class="section pokemon-list_section"></section>
 
   <script src="helper.js"></script>
   <script src="script.js"></script>
