@@ -1,5 +1,5 @@
-const STATIC_CACHE = 'site-static-v1';
-const DYNAMIC_CACHE = 'site-dynamic-v1';
+const STATIC_CACHE = 'site-static-v2';
+const DYNAMIC_CACHE = 'site-dynamic-v2';
 
 const assets = [
   '/',
