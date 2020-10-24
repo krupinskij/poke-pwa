@@ -1,6 +1,12 @@
-const STATIC_CACHE = 'site-static-v2';
-const DYNAMIC_CACHE = 'site-dynamic-v2';
+// statyczny cache
+// przechowujemy w nim rzeczy na stałe
+const STATIC_CACHE = 'site-static-dep';
 
+// dynamiczny cache
+// zapisujemy do niego nowe rzeczy, a inne usuwamy
+const DYNAMIC_CACHE = 'site-dynamic-dep';
+
+// tablica elementów dla statycznego cacha
 const assets = [
   '/',
 
@@ -25,10 +31,16 @@ const assets = [
   '/manifest.json'
 ];
 
-// cache size limit function
+// funkcja do ograniczania ilość elementów w cache'u
 const limitCacheSize = (name, size) => {
+
+  // otwieramy cache o podanej nazwie
   caches.open(name).then(cache => {
+
+    // pobieramy jego elementy
     cache.keys().then(keys => {
+
+      // jak za dużo to usuwamy
       if(keys.length > size){
         cache.delete(keys[0]).then(limitCacheSize(name, size));
       }
@@ -36,19 +48,23 @@ const limitCacheSize = (name, size) => {
   });
 };
 
-// install event
+// instalacja service workera
 self.addEventListener('install', evt => {
-  console.log('service worker installed');
+  console.log("service worker installed");
+
   evt.waitUntil(
+    // zapis do statycznego cache'a
     caches.open(STATIC_CACHE).then((cache) => {
       cache.addAll(assets);
     })
   );
 });
 
-// activate event
+// aktywacja service workera 
 self.addEventListener('activate', evt => {
-  console.log('service worker activated');
+  console.log("service worker activated");
+
+  // usunięcie zbędnych cache'y
   evt.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(keys
@@ -59,16 +75,25 @@ self.addEventListener('activate', evt => {
   );
 });
 
+// pobieranie czegoś
 self.addEventListener('fetch', evt => {
-  //console.log('fetch event', evt);
+  console.log("new request made");
+
   evt.respondWith(
+    // sprawdź czy nie mamy tego czegoś w jakimś cache'u
     caches.match(evt.request).then(cacheRes => {
+
+      // jak mamy to go zwróć, a jak nie to pobierz z neta
       return cacheRes || fetch(evt.request).then(fetchRes => {
+
+        // zapisywanie w dynamicznym cache'u
         return caches.open(DYNAMIC_CACHE).then(cache => {
           cache.put(evt.request.url, fetchRes.clone());
+          limitCacheSize(dynamicCacheName, 15);
           return fetchRes;
         })
       });
+    // jak się posypie (bo nie mamy internetu) to zwróć stronę z errorem
     }).catch(() => {
       return caches.match('/fallback.html');
     })
