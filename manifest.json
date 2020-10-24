@@ -1,5 +1,5 @@
 {
-  "name": "Pokedex PWA",
+  "name": "Pokemon PWA",
   "short_name": "PokePWA",
   "start_url": "home.html",
   "display": "standalone",

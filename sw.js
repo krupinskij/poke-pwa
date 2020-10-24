@@ -1,10 +1,10 @@
 // statyczny cache
 // przechowujemy w nim rzeczy na stałe
-const STATIC_CACHE = 'site-static-dep';
+const STATIC_CACHE = 'static-cache';
 
 // dynamiczny cache
-// zapisujemy do niego nowe rzeczy, a inne usuwamy
-const DYNAMIC_CACHE = 'site-dynamic-dep';
+// zapisujemy do niego nowe rzeczy, inne usuwamy
+const DYNAMIC_CACHE = 'dynamic-cache';
 
 // tablica elementów dla statycznego cacha
 const assets = [
@@ -64,7 +64,9 @@ self.addEventListener('install', evt => {
 self.addEventListener('activate', evt => {
   console.log("service worker activated");
 
-  // usunięcie zbędnych cache'y
+  // usunięcie zbędnych cache'y 
+  // wygodne, gdy podczas tworzenia aplikacji, gdy tworzysz cache o różnych nazwach
+  // nie jest to wymagane do działania aplikacji
   evt.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(keys
@@ -77,8 +79,6 @@ self.addEventListener('activate', evt => {
 
 // pobieranie czegoś
 self.addEventListener('fetch', evt => {
-  console.log("new request made");
-
   evt.respondWith(
     // sprawdź czy nie mamy tego czegoś w jakimś cache'u
     caches.match(evt.request).then(cacheRes => {
@@ -89,12 +89,11 @@ self.addEventListener('fetch', evt => {
         // zapisywanie w dynamicznym cache'u
         return caches.open(DYNAMIC_CACHE).then(cache => {
           cache.put(evt.request.url, fetchRes.clone());
-          limitCacheSize(dynamicCacheName, 15);
+          limitCacheSize(DYNAMIC_CACHE, 15)
           return fetchRes;
         })
       });
-    // jak się posypie (bo nie mamy internetu) to zwróć stronę z errorem
-    }).catch(() => {
+    }).catch(() => { // jak się posypie (bo nie mamy internetu) to zwróć stronę z errorem
       return caches.match('/fallback.html');
     })
   );
